@@ -23,6 +23,8 @@
       onMount(() => searchBar.focus());
       
       $: onChange(value)
+
+      import SearchResult from './SearchResult.svelte';
   </script>
   
   <style>      
@@ -32,6 +34,7 @@
     
     .content {
         height: fit-content;
+        border-radius: 0.7em;
         background: white;
         padding: 10px;
     }
@@ -39,11 +42,12 @@
     .invisibleBox {
         height: 70vh;
     }
+
   </style>
   
 
 <div class = "invisibleBox">
-    <div class= "content">
+    <div class= "content">  
         <div>
             <input
             bind:this={searchBar}
@@ -53,6 +57,10 @@
                   if(e.code === "Enter") _onOkay();
               }} />
           </div>
+
+        <div class="results">
+            <SearchResult/>
+        </div>
       
         <div>
             <button on:click={_onCancel}>

@@ -1,5 +1,4 @@
 <script>
-
 import SourcesModal from './SourcesModal.svelte';
 
 import { getContext } from 'svelte';
@@ -10,5 +9,6 @@ const showSourcesModal = () => open(SourcesModal);
 
 <p>This is the sidebar.</p>
 <button 
+class="button"
 on:click={showSourcesModal}
 >+</button>
