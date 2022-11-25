@@ -1,7 +1,6 @@
 <!--Pop up modal to look up a source for the rss feed-->
 
 <script lang="ts">
-    import { text } from 'stream/consumers';
     import { getContext } from 'svelte';
       export let hasForm = false;
       export let onCancel = () => {};

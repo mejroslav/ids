@@ -7,21 +7,14 @@
   } from "@fortawesome/free-solid-svg-icons";
 
   import Modal from 'svelte-simple-modal';
-  import SourcesModal from "./lib/SourcesModal.svelte";
-
-  import { getContext } from 'svelte';
-  const { open } = getContext('simple-modal');  
-  const showSourcesModal = () => open(SourcesModal, {});
+  import Sidebar from "./lib/Sidebar.svelte";
 </script>
 
 <Modal>
-<aside>
-  <p>This is the sidebar.</p>
-  <button 
-  on:click={showSourcesModal}
-  >Press me</button>
-</aside>
 <main>This is the main part.</main>
+<aside>
+  <Sidebar/>
+</aside>
 <footer>
   <div class="left-footer">
     <p><a href="https://youtu.be/dQw4w9WgXcQ">Never Gonna Give You Up</a></p>
