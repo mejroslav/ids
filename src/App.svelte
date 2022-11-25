@@ -5,11 +5,21 @@
     faCirclePlay,
     faForward,
   } from "@fortawesome/free-solid-svg-icons";
+
+  import Modal from 'svelte-simple-modal';
+  import SourcesModal from "./lib/SourcesModal.svelte";
+
+  import { getContext } from 'svelte';
+  const { open } = getContext('simple-modal');  
+  const showSourcesModal = () => open(SourcesModal, {});
 </script>
 
+<Modal>
 <aside>
   <p>This is the sidebar.</p>
-  <button>Press me</button>
+  <button 
+  on:click={showSourcesModal}
+  >Press me</button>
 </aside>
 <main>This is the main part.</main>
 <footer>
@@ -24,6 +34,7 @@
   </div>
   <div class="right-footer" />
 </footer>
+</Modal>
 
 <style lang="scss">
   :global(:root) {
