@@ -11,16 +11,18 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.1.0",
-    "sass": "^1.56.1"
+    "@tauri-apps/api": "^1.1.0"
   },
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@sveltejs/vite-plugin-svelte": "^1.0.1",
     "@tauri-apps/cli": "^1.1.0",
     "@tsconfig/svelte": "^3.0.0",
     "@types/node": "^18.7.10",
+    "sass": "^1.56.1",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.0",
+    "svelte-fa": "^3.0.3",
     "svelte-preprocess": "^4.10.7",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
