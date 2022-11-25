@@ -12,3 +12,13 @@ const showSourcesModal = () => open(SourcesModal);
 class="button"
 on:click={showSourcesModal}
 >+</button>
+
+<style>
+button {
+    background-image: var(--primary-gradient);
+    border: 1px solid var(--section-border);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+  }
+</style>

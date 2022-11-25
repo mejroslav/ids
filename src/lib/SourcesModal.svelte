@@ -25,26 +25,7 @@
       $: onChange(value)
 
       import SearchResult from './SearchResult.svelte';
-  </script>
-  
-  <style>      
-    input {
-          width: 100%;
-      }
-    
-    .content {
-        height: fit-content;
-        border-radius: 0.7em;
-        background: white;
-        padding: 10px;
-    }
-
-    .invisibleBox {
-        height: 70vh;
-    }
-
-  </style>
-  
+  </script>  
 
 <div class = "invisibleBox">
     <div class= "content">  
@@ -60,6 +41,7 @@
 
         <div class="results">
             <SearchResult/>
+            <SearchResult Name = "Guy Fieri" Description = "cool man" />
         </div>
       
         <div>
@@ -69,3 +51,21 @@
         </div>
     </div>
 </div>
+
+<style>      
+    input {
+          width: 100%;
+      }
+    
+    .content {
+        height: fit-content;
+        border-radius: 0.7em;
+        background: var(--section-border);
+        padding: 10px;
+    }
+
+    .invisibleBox {
+        height: 70vh;
+    }
+
+  </style>
