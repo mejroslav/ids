@@ -1,11 +1,13 @@
 <!--Pop up modal to look up a source for the rss feed-->
+<!--suggest results via on change colorcode sources (actuall import sources from somewhere)-->
 
 <script lang="ts">
-    import { getContext } from 'svelte';
-      export let hasForm = false;
+    import { getContext, onMount } from 'svelte';
+      const { close } = getContext('simple-modal') as any;
       export let onCancel = () => {};
       export let onOkay = (x:string) => {};
       
+      let searchBar:HTMLInputElement;
       let value;
       let onChange = (x:string) => {};
       
@@ -18,42 +20,44 @@
           onOkay(value);
           close();
       }
+      onMount(() => searchBar.focus());
       
       $: onChange(value)
   </script>
   
-  <style>
-      
-      input {
+  <style>      
+    input {
           width: 100%;
       }
-      
-      .buttons {
-          display: flex;
-          justify-content: space-between;
-      }
-      
-      .hidden {
-          display: none;
-      }
+    
+    .content {
+        height: fit-content;
+        background: white;
+        padding: 10px;
+    }
+
+    .invisibleBox {
+        height: 70vh;
+    }
   </style>
   
-  {#if hasForm}
-  <div>
-      <input
-      type="text"
-        bind:value
-        on:keydown={e => {
-            if(e.code === "Enter") _onOkay();
-        }} />
+
+<div class = "invisibleBox">
+    <div class= "content">
+        <div>
+            <input
+            bind:this={searchBar}
+            type="text"
+              bind:value
+              on:keydown={e => {
+                  if(e.code === "Enter") _onOkay();
+              }} />
+          </div>
+      
+        <div>
+            <button on:click={_onCancel}>
+                Cancel
+            </button>
+        </div>
     </div>
-  {/if}
-  
-  <div class="buttons">
-      <button on:click={_onCancel}>
-          Cancel
-      </button>
-      <button on:click={_onOkay}>
-          Okay
-      </button>
-  </div>
+</div>

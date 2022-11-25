@@ -10,7 +10,10 @@
   import Sidebar from "./lib/Sidebar.svelte";
 </script>
 
-<Modal>
+<Modal
+closeButton={false}
+styleWindow={{background: 'none'}}
+>
 <main>This is the main part.</main>
 <aside>
   <Sidebar/>
