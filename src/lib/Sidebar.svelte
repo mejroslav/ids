@@ -1,5 +1,5 @@
 <script>
-import SourcesModal from './SourcesModal.svelte';
+import SourcesModal from './SearchModal.svelte';
 
 import { getContext } from 'svelte';
 const { open } = getContext('simple-modal');  

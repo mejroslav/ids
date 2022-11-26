@@ -5,7 +5,6 @@
     export let Icon = "Ikona Modrý Pták";
 </script>
 
-<div class="outerBoi">
 <button>
 <div class="content">
     <div class = "text-area">
@@ -18,29 +17,26 @@
     </div>
 </div>
 </button>
-</div>
+
 
 <style lang="scss">
     button {
-    background-color: transparent;
+    background-color: var(--primary-background);
     padding: 0;
     border-color: transparent;
     border-width: 6px;
     border-style: solid;
+    border-radius: 0.7em;
+    margin-top: 0.4em;
     width: 100%;
     height: 100%;
+    //transition: background-color 1s;    // why is this so laggy???
+    //transition-timing-function: linear;
     }
     button:focus {
-        border-image: var(--primary-gradient) 20% round;
+        background-color: var(--section-border);
     }
-    .outerBoi {
-        padding: 2px;
-        border-color: transparent;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 1em;
-        overflow:hidden; 
-    }
+
     h2, h3, h4{
         height: fit-content;
         margin: 0;

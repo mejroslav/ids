@@ -27,10 +27,12 @@
       import SearchResult from './SearchResult.svelte';
   </script>  
 
-<div class = "invisibleBox">
-    <div class= "content">  
+<div class = "invisibleBox" on:click={_onCancel}> <!--is that warning important?-->
+    <div class= "content">
         <div>
             <input
+            class = "searchbar"
+            placeholder="Search URLs, Twitter handles, Spotify authors…"
             bind:this={searchBar}
             type="text"
               bind:value
@@ -45,7 +47,9 @@
         </div>
       
         <div>
-            <button on:click={_onCancel}>
+            <button 
+            class="cancelButton"
+            on:click={_onCancel}>
                 Cancel
             </button>
         </div>
@@ -58,14 +62,34 @@
       }
     
     .content {
+        color: var(--primary-text);
         height: fit-content;
         border-radius: 0.7em;
-        background: var(--section-border);
+        background-color: transparent;
         padding: 10px;
     }
 
     .invisibleBox {
         height: 70vh;
+    }
+
+    .searchbar {
+        background-color: var(--primary-background);
+        color: var(--primary-text);
+        padding: 0.5em;
+        border-radius: 0.7em;
+        box-sizing: border-box; /* this is what makes the input actually as wide as it should be; otherwise it sizes itself such that its *content* is 'width' wide */
+    }
+    
+    .cancelButton {
+        border-radius: 0.7em;
+        border-color: transparent;
+        color: var(--primary-text);
+        margin-top: 1em;
+        background-color: var(--primary-background);
+    }
+    .cancelButton:focus {
+        background-color: var(--accent);
     }
 
   </style>
