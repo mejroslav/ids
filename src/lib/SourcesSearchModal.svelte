@@ -24,7 +24,7 @@
       
       $: onChange(value)
 
-      import SearchResult from './SearchResult.svelte';
+      import SearchResult from './SourceSearchResult.svelte';
   </script>  
 
 <div class = "invisibleBox" on:click={_onCancel}> <!--is that warning important?-->
