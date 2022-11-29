@@ -11,6 +11,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@tauri-apps/api": "^1.1.0"
   },
   "devDependencies": {

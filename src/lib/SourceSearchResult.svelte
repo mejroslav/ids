@@ -1,8 +1,13 @@
 <script>
-    export let Name = "Rick Astley";
-    export let Description = "singer at ur mum";
-    export let Source = "twooter";
-    export let Icon = "Ikona Modrý Pták";
+
+    export let Name = "Source Name";
+    export let Description = "lengthy source description that tries to describe the source at great length";
+    export let Source = "Name of the site whence the source is from";
+
+    import TemplateIcon from "./IconComponents/TemplateIcon.svelte";
+
+    export let Icon = TemplateIcon;
+
 </script>
 
 <button>
@@ -12,14 +17,16 @@
         <h3>{Description}</h3>
         <h4>{Source}</h4>
     </div>
-    <div class = "image">
-        {Icon}
+    <div class = "icon">
+        <Icon/>
     </div>
 </div>
 </button>
 
 
 <style lang="scss">
+
+
     button {
     background-color: var(--primary-background);
     padding: 0;
@@ -41,6 +48,14 @@
         height: fit-content;
         margin: 0;
     }
+    h3 {
+        font-weight: normal;
+        font-size: normal;
+    }
+    h4 {
+        font-weight: lighter;
+        font-size: small;
+    }
     div {
         --image-width: min(5em, 20vw);
         --result-height: 5em;
@@ -50,7 +65,7 @@
         color: var(--primary-text);
         text-align: left;
         display:grid;
-        grid-template: "text-area image" var(--result-height) / 1fr var(--image-width);
+        grid-template: "text-area icon" var(--result-height) / 1fr var(--image-width);
         grid-gap: 5px;
         background-color: transparent;
         width: 100%;
@@ -58,9 +73,11 @@
         margin: 0.6em;
     }
 
-    .image{
-        grid-area: image;
+    .icon{
+        grid-area: icon;
         border-radius: 1em;
+        display: flex;
+        align-items: center;
     }
 
     .text-area{

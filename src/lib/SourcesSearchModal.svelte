@@ -25,6 +25,8 @@
       $: onChange(value)
 
       import SearchResult from './SourceSearchResult.svelte';
+
+      import GuyFieri from "./GuyFieri.svelte"; //Delete later
   </script>  
 
 <div class = "invisibleBox" on:click={_onCancel}> <!--is that warning important?-->
@@ -43,7 +45,7 @@
 
         <div class="results">
             <SearchResult/>
-            <SearchResult Name = "Guy Fieri" Description = "cool man" />
+            <GuyFieri/>
         </div>
       
         <div>
