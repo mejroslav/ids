@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "commit-count": "deno run --allow-net ./usefulScripts/authorCommitCount.ts",
+    "last-commit": "deno run --allow-net ./usefulScripts/lastCommit.ts"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.2.1",

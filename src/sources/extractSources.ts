@@ -1,3 +1,5 @@
+import type { Item } from "./types";
+
 function mimeType(r: Response): string {
   return r.headers.get("Content-Type");
 }
@@ -28,8 +30,14 @@ async function flatFetch(url: string): Promise<Response[]> {
         return Promise.all(results).then((r) => r.flat());
       }
       break;
-
+      
     case "application/rss+xml":
       throw new Error("not implemented yet");
   }
+}
+
+// TODO: vymyslet
+async function rssToItems(url: string): Promise<Item[]> {
+  const res = await fetch(url);
+  return [];
 }
