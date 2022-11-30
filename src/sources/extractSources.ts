@@ -1,7 +1,8 @@
 import type { Item } from "./types";
+import { fetch, Response, ResponseType } from '@tauri-apps/api/http';
 
-function mimeType(r: Response): string {
-  return r.headers.get("Content-Type");
+function mimeType(r: Response<any>): string {
+  return r.headers["Content-Type"];
 }
 
 function toArray<T>(iter: Iterable<T>): T[] {
@@ -10,16 +11,16 @@ function toArray<T>(iter: Iterable<T>): T[] {
 
 const LINK_SELECTORS = [`link[rel="alternate"][type="application/rss+xml"]`];
 
-async function flatFetch(url: string): Promise<Response[]> {
-  const res = await fetch(url);
+async function flatFetch(url: string): Promise<Response<any>[]> {
+  const res = await fetch<string>(url, {
+    method: "GET",
+    responseType: ResponseType.Text,
+  });
 
   switch (mimeType(res)) {
     case "text/html":
       {
-        const doc = new DOMParser().parseFromString(
-          await res.text(),
-          "text/html"
-        );
+        const doc = new DOMParser().parseFromString(res.data, "text/html");
 
         const results = LINK_SELECTORS.flatMap((s) =>
           toArray(doc.querySelectorAll<HTMLLinkElement>(s))
@@ -30,14 +31,35 @@ async function flatFetch(url: string): Promise<Response[]> {
         return Promise.all(results).then((r) => r.flat());
       }
       break;
-      
+
     case "application/rss+xml":
       throw new Error("not implemented yet");
   }
 }
 
 // TODO: vymyslet
-async function rssToItems(url: string): Promise<Item[]> {
-  const res = await fetch(url);
-  return [];
+export async function rssToItems(url: string): Promise<Item[]> {
+  const response = await fetch<string>(url, {
+    method: "GET",
+    responseType: ResponseType.Text,
+  });
+
+  // DOM Parser na parsování RSS z XML
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(response.data, "text/xml");
+
+  const itemElements = toArray(xmlDoc.querySelectorAll("item"));
+
+  // const items: Item[] = [];
+  // for (const itemEl of itemElements) {
+  //   const title = itemEl.querySelector("title").textContent;
+  //   const content = itemEl.querySelector("description").textContent;
+  //   const result: Item = { title, content };
+  //   items.push(result);
+  // }
+
+  return itemElements.map(itemEl => ({
+    title: itemEl.querySelector("title").textContent,
+    content: itemEl.querySelector("description").textContent,
+  }));
 }

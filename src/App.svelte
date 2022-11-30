@@ -6,30 +6,31 @@
     faForward,
   } from "@fortawesome/free-solid-svg-icons";
 
-  import Modal from 'svelte-simple-modal';
+  import Modal from "svelte-simple-modal";
   import Sidebar from "./lib/Sidebar.svelte";
+
+  import { rssToItems } from "./sources/extractSources";
+  const testURL = "https://www.zive.cz/rss/sc-47/default.aspx";
+  rssToItems(testURL).then((x) => console.log("AAA", x));
 </script>
 
-<Modal
-closeButton={false}
-styleWindow={{background: 'none'}}
->
-<main>This is the main part.</main>
-<aside>
-  <Sidebar/>
-</aside>
-<footer>
-  <div class="left-footer">
-    <p><a href="https://youtu.be/dQw4w9WgXcQ">Never Gonna Give You Up</a></p>
-    <p><a href="https://youtu.be/dQw4w9WgXcQ">Rick Astley</a></p>
-  </div>
-  <div class="music-controls">
-    <span class="skip-backward"><Fa icon={faBackward} /></span>
-    <span class="play fa-regular"><Fa icon={faCirclePlay} /></span>
-    <span class="skip-forward"><Fa icon={faForward} /></span>
-  </div>
-  <div class="right-footer" />
-</footer>
+<Modal closeButton={false} styleWindow={{ background: "none" }}>
+  <main>This is the main part.</main>
+  <aside>
+    <Sidebar />
+  </aside>
+  <footer>
+    <div class="left-footer">
+      <p><a href="https://youtu.be/dQw4w9WgXcQ">Never Gonna Give You Up</a></p>
+      <p><a href="https://youtu.be/dQw4w9WgXcQ">Rick Astley</a></p>
+    </div>
+    <div class="music-controls">
+      <span class="skip-backward"><Fa icon={faBackward} /></span>
+      <span class="play fa-regular"><Fa icon={faCirclePlay} /></span>
+      <span class="skip-forward"><Fa icon={faForward} /></span>
+    </div>
+    <div class="right-footer" />
+  </footer>
 </Modal>
 
 <style lang="scss">
