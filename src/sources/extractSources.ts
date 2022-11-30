@@ -2,6 +2,10 @@ function mimeType(r: Response): string {
   return r.headers.get("Content-Type");
 }
 
+function toArray<T>(iter: Iterable<T>): T[] {
+  return [...iter];
+}
+
 const LINK_SELECTORS = [`link[rel="alternate"][type="application/rss+xml"]`];
 
 async function flatFetch(url: string): Promise<Response[]> {
@@ -14,15 +18,14 @@ async function flatFetch(url: string): Promise<Response[]> {
           await res.text(),
           "text/html"
         );
-        return Promise.all(
-          LINK_SELECTORS.map((s) => [
-            ...doc.querySelectorAll<HTMLLinkElement>(s),
-          ])
-            .flat()
-            .map((l) => l?.href)
-            .filter((l) => l)
-            .map(flatFetch)
-        ).then((r) => r.flat());
+
+        const results = LINK_SELECTORS.flatMap((s) =>
+          toArray(doc.querySelectorAll<HTMLLinkElement>(s))
+        )
+          .map((linkEl) => linkEl.href)
+          .map(flatFetch);
+
+        return Promise.all(results).then((r) => r.flat());
       }
       break;
 
