@@ -50,7 +50,9 @@ export async function rssToItems(url: string): Promise<Item[]> {
 
   const itemElements = toArray(xmlDoc.querySelectorAll("item"));
 
-  // const items: Item[] = [];
+
+  // NAIVNÍ KÓD, KTEREJ BY MOHL FUNGOVAT
+  // const items: Item[] = [];f
   // for (const itemEl of itemElements) {
   //   const title = itemEl.querySelector("title").textContent;
   //   const content = itemEl.querySelector("description").textContent;
@@ -58,6 +60,7 @@ export async function rssToItems(url: string): Promise<Item[]> {
   //   items.push(result);
   // }
 
+  // FUNKCIONÁLNÍ ŘEŠENÍ
   return itemElements.map(itemEl => ({
     title: itemEl.querySelector("title").textContent,
     content: itemEl.querySelector("description").textContent,

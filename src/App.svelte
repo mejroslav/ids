@@ -8,14 +8,13 @@
 
   import Modal from "svelte-simple-modal";
   import Sidebar from "./lib/Sidebar.svelte";
-
-  import { rssToItems } from "./sources/extractSources";
-  const testURL = "https://www.zive.cz/rss/sc-47/default.aspx";
-  rssToItems(testURL).then((x) => console.log("AAA", x));
+  import Feed from "./components/Feed.svelte";
 </script>
 
 <Modal closeButton={false} styleWindow={{ background: "none" }}>
-  <main>This is the main part.</main>
+  <main>
+    <Feed />
+  </main>
   <aside>
     <Sidebar />
   </aside>
@@ -34,31 +33,7 @@
 </Modal>
 
 <style lang="scss">
-  :global(:root) {
-    // colors
-    --primary-background: #111;
-    --primary-text: #ccc;
-    --section-border: #222;
-    --accent: #d02d7e;
 
-    --gradient-color-1: #ff9b5b;
-    --gradient-color-2: #f43060;
-    --gradient-color-3: #8722c6;
-    --primary-gradient: linear-gradient(
-      to bottom right,
-      var(--gradient-color-2),
-      var(--gradient-color-3)
-    );
-    --secondary-gradient: linear-gradient(
-      to bottom right,
-      var(--gradient-color-1),
-      var(--gradient-color-2)
-    );
-
-    // sizes
-    --sidebar-width: 250px;
-    --footer-height: 100px;
-  }
   :global(#app) {
     display: grid;
     grid-template:
@@ -96,6 +71,7 @@
   main {
     grid-area: main;
     padding: 15px;
+    overflow-y: scroll;
   }
 
   footer {
