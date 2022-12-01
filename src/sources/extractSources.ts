@@ -64,7 +64,7 @@ export async function rssToItems(url: string): Promise<Item[]> {
   return itemElements.map(itemEl => ({
     title: itemEl.querySelector("title").textContent,
     content: itemEl.querySelector("description").textContent,
-    author: { profileImage: new URL("https://example.com"), title: ""},
+    author: { profileImage: new URL("https://asset.stdout.cz/fe/aktualne/img/largetile.png"), title: ""},
     published: new Date (itemEl.querySelector("pubDate").textContent),
   }));
 }
