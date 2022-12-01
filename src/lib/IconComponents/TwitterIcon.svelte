@@ -7,5 +7,5 @@ import {
 
 </script>
 
-<span style="font-size: 2em"><Fa icon={faTwitter}/></span>
+<span style="font-size: 3.5em"><Fa icon={faTwitter}/></span>
 

@@ -24,12 +24,13 @@
       
       $: onChange(value)
 
-      import SearchResult from './SourceSearchResult.svelte';
+    import SearchResult from './SourceSearchResult.svelte';
+    import TwitterSource from './TwitterSource.svelte';
 
-      import GuyFieri from "./GuyFieri.svelte"; //Delete later
+      import GuyFieri from "./TwitterSource.svelte"; //Delete later
   </script>  
 
-<div class = "invisibleBox" on:click={_onCancel}> <!--is that warning important?-->
+<div class = "invisibleBox" on:click={_onCancel}> <!--TBD is that warning important?-->
     <div class= "content">
         <div>
             <input
@@ -44,8 +45,10 @@
           </div>
 
         <div class="results">
+
             <SearchResult/>
-            <GuyFieri/>
+
+            <TwitterSource  Name = "Guy Fieri" Handle = "@fieriman" Bio = "A man with really cool hair that is kinda dark at the bottom but gets rly cool like whoosh blonde at the tips kinda looks like a fire but yellow yknow maybe a piss fire or something hold on is that why his name is Fieri I mean he is a guy too that can't be a conicnidence" />
         </div>
       
         <div>
