@@ -37,7 +37,7 @@ async function flatFetch(url: string): Promise<Response<any>[]> {
   }
 }
 
-// TODO: vymyslet
+
 export async function rssToItems(url: string): Promise<Item[]> {
   const response = await fetch<string>(url, {
     method: "GET",
@@ -64,5 +64,7 @@ export async function rssToItems(url: string): Promise<Item[]> {
   return itemElements.map(itemEl => ({
     title: itemEl.querySelector("title").textContent,
     content: itemEl.querySelector("description").textContent,
+    author: { profileImage: new URL("https://example.com"), title: ""},
+    published: new Date (itemEl.querySelector("pubDate").textContent),
   }));
 }

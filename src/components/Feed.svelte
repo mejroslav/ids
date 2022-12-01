@@ -1,6 +1,6 @@
 <script lang="ts">
     import { rssToItems } from "../sources/extractSources";
-    const testURL = "https://www.zive.cz/rss/sc-47/default.aspx";
+    const testURL = "https://www.aktualne.cz/mrss/";
 
     const posts = rssToItems(testURL);
 </script>
