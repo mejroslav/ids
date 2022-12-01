@@ -30,7 +30,7 @@
       import GuyFieri from "./TwitterSource.svelte"; //Delete later
   </script>  
 
-<div class = "invisibleBox" on:click={_onCancel}> <!--TBD is that warning important?-->
+<div class = "invisibleBox" on:click={_onCancel} on:keydown={()=>{}}>
     <div class= "content">
         <div>
             <input
