@@ -14,6 +14,6 @@ export interface StreamOptions {
     filter: any;
 }
 
-export interface Source {
-
+export interface Source extends AsyncIterable<Item> {
+    [Symbol.asyncIterator](): AsyncIterator<Item, void>;
 }
